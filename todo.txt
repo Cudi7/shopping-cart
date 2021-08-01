@@ -1,0 +1,3 @@
+luego pasar al frontend.
+y luego añadir el cart component donde se veran todos los items añadidos y donde podras quitar alguno o todos
+añadir funcionalidad en el backend

@@ -1,9 +1,9 @@
 const { getSingleProduct } = require('../utils/dataFunctions');
 
-const existingProduct = (req, res, next) => {
+const existingProduct = async (req, res, next) => {
   const { id } = req.body;
 
-  const product = getSingleProduct(id);
+  const product = await getSingleProduct(id);
 
   if (!product) res.error = "We couldn't find this product";
   if (product) res.existingProduct = product;

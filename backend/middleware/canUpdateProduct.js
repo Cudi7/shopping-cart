@@ -1,4 +1,6 @@
 const canUpdateProduct = (req, res, next) => {
+  if (!res.existingProduct?.countInStock) return next();
+
   const productCurrentQty = res.existingProduct.countInStock;
   const userQty = req.body.qty;
 
