@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItem from '@material-ui/core/ListItem';
@@ -18,7 +17,6 @@ import { useSelector } from 'react-redux';
 import { selectAllProducts, userCurrentCart } from './productsSlice';
 
 import RemoveItem from './RemoveItem';
-import { initialCartLoad } from './productsAPI';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -105,8 +103,8 @@ export default function FullScreenDialog() {
         </AppBar>
         <List>
           {cartItems?.length > 0
-            ? cartItems.map((item) => (
-                <>
+            ? cartItems.map((item, index) => (
+                <React.Fragment key={index}>
                   <ListItem button id={item.id}>
                     <ListItemText
                       primary={item.name}
@@ -115,7 +113,7 @@ export default function FullScreenDialog() {
                     <RemoveItem qty={item.qty} id={item.id} />
                   </ListItem>
                   <Divider />
-                </>
+                </React.Fragment>
               ))
             : null}
         </List>

@@ -25,13 +25,11 @@ function AddProduct({ stock, id }) {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [count, setCount] = useState(0);
-  const [error, setError] = useState(null);
 
   const handleMaxCount = () => count < stock && setCount((prev) => prev + 1);
 
   const handleAddProduct = () => {
-    setError(null);
-    if (count === 0) return setError('Debes seleccionar una cantidad');
+    if (count === 0) return;
     dispatch(addQuantity({ id, qty: count }));
     setCount(0);
   };

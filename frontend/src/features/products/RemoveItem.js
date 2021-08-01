@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function RemoveItem({ qty, id }) {
   const classes = useStyles();
-  const [selectedQty, setSelectedQty] = useState(0);
+  const [selectedQty, setSelectedQty] = useState('');
   const [quantityValues, setQuantityValues] = useState(null);
   const dispatch = useDispatch();
 
@@ -35,8 +35,7 @@ export default function RemoveItem({ qty, id }) {
   const handleChange = (event) => setSelectedQty(event.target.value);
 
   const handleDelete = () => {
-    console.log(selectedQty);
-    if (selectedQty <= 0) return;
+    if (selectedQty <= 0 || isNaN(selectedQty)) return;
     dispatch(removeQuantity(id, selectedQty));
   };
 
